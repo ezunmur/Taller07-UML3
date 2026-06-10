@@ -2,27 +2,46 @@ package taller03.uml;
 
 public class Administrador extends Usuario {
 
-    public Administrador(String usuario, String contra, String nombre, String apellido) {
-        super(usuario, contra, nombre, apellido);
-    }
-    
-    public void crearUsuarioConRol(String usuario, String contrasenia) {
-        Usuario nUsuario = new Usuario();
-        nUsuario.setUsuario(usuario);
-        nUsuario.setContrasenia(contrasenia);
-
-        System.out.println("Usuario creado exitosamente: " + nUsuario.getUsuario());
+    public Administrador() {
+        super();
     }
 
-    public void asignarPermiso(String usuario){
-        System.out.println("Permisos agregados al usuario: ");
+    public Administrador(String usuario, String contrasenia, String nombre, String apellido) {
+        super(usuario, contrasenia, nombre, apellido);
     }
 
+    // Crear un usuario con rol básico
+    public Usuario crearUsuarioConRol(String usuario, String contrasenia, String nombre, String apellido) {
+        return new Usuario(usuario, contrasenia, nombre, apellido);
+    }
+
+    // Asignar permisos (simulado)
+    public void asignarPermiso(Usuario usuario, String permiso) {
+        System.out.println("Permiso '" + permiso + "' asignado a: " + usuario.getUsuario());
+    }
+
+    // Actualización del sistema
     public void actualizarSoftware() {
-        System.out.println("Software actualizado exitosamente");
+        System.out.println("El sistema ha sido actualizado correctamente.");
     }
 
-    public void asignarResponsable() {
-        // Faltan implementacion de entrada
+    // Asignar responsable de un curso (preferiblemente un Profesor)
+    public void asignarResponsable(Curso curso, Profesor responsable) {
+        if (curso == null || responsable == null) {
+            System.out.println("No se pudo asignar responsable: datos incompletos.");
+            return;
+        }
+        System.out.println("Responsable " + responsable.getNombre()
+                + " asignado al curso " + curso.getNombre());
+    }
+
+    // Bloquear usuario
+    public void bloquearUsuario(Usuario usuario) {
+        System.out.println("Usuario bloqueado: " + usuario.getUsuario());
+    }
+
+    // Desbloquear usuario
+    public void desbloquearUsuario(Usuario usuario) {
+        System.out.println("Usuario desbloqueado: " + usuario.getUsuario());
     }
 }

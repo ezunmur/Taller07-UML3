@@ -1,4 +1,7 @@
+package taller03.uml;
+
 import java.time.LocalDateTime;
+
 // Utilizar LocalDateTime
 public class ActividadSumativa{
     
@@ -64,4 +67,18 @@ public class ActividadSumativa{
     public void setCalificacion(float calificacion) { 
         this.calificacion = calificacion; 
     }
+
+    // Aplicar calificación con validación
+    public boolean aplicarCalificacion(float cal) {
+        if (cal < 0f) {
+            return false;
+        }
+        if (cal > this.puntajeMaximo) {
+            this.calificacion = this.puntajeMaximo;
+        } else {
+            this.calificacion = cal;
+        }
+        return true;
+    }
+
 }

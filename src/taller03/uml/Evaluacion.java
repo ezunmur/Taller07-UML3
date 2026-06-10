@@ -1,3 +1,5 @@
+package taller03.uml;
+
 import java.time.LocalDateTime;
 //Recordar DateTime para futuras referencias 
 public class Evaluacion extends ActividadSumativa{
@@ -12,5 +14,10 @@ public class Evaluacion extends ActividadSumativa{
         return limiteDeTiempo;}
     public void setLimiteDeTiempo(int limiteDeTiempo) {
         this.limiteDeTiempo = limiteDeTiempo;
+    }
+
+    // Método representativo para iniciar la evaluación
+    public void iniciarEvaluacion() {
+        System.out.println("Evaluación '" + getTitulo() + "' iniciada. Límite (min): " + limiteDeTiempo);
     }
 }

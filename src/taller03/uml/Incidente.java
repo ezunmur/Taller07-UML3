@@ -6,19 +6,20 @@ import java.util.List;
 
 public class Incidente {
 
-    // Atributos
-    protected int id;
-    protected LocalDateTime fechaReportado;
-    protected String estado;
-    protected String titulo;
-    protected String descripcion;
-    protected List<String> logActualizaciones;
-    protected LocalDateTime fechaCerrado;
-    protected String tipo;
+    private int id;
+    private LocalDateTime fechaReportado;
+    private String estado;
+    private String titulo;
+    private String descripcion;
+    private List<String> logActualizaciones;
+    private LocalDateTime fechaCerrado;
+    private String tipo;
+    private Usuario responsable;
 
     public Incidente(int id, LocalDateTime fechaReportado, String estado,
-                        String titulo, String descripcion,
-                        LocalDateTime fechaCerrado, String tipo) {
+                     String titulo, String descripcion,
+                     LocalDateTime fechaCerrado, String tipo) {
+
         this.id = id;
         this.fechaReportado = fechaReportado;
         this.estado = estado;
@@ -26,8 +27,11 @@ public class Incidente {
         this.descripcion = descripcion;
         this.fechaCerrado = fechaCerrado;
         this.tipo = tipo;
+        this.responsable = null;
         this.logActualizaciones = new ArrayList<>();
     }
+
+    // Getters y Setters
 
     public int getId() {
         return id;
@@ -92,4 +96,32 @@ public class Incidente {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public Usuario getResponsable() {
+        return responsable;
+    }
+
+    public void setResponsable(Usuario responsable) {
+        this.responsable = responsable;
+    }
+
+    public void asignarResponsable(Usuario usuario) {
+        this.responsable = usuario;
+        if (usuario != null) {
+            agregarActualizacion("Responsable asignado: " + usuario.getUsuario());
+        }
+    }
+
+    // Métodos de gestión
+
+    public void agregarActualizacion(String actualizacion) {
+        logActualizaciones.add(actualizacion);
+    }
+
+    public void cerrarIncidente() {
+        this.estado = "Cerrado";
+        this.fechaCerrado = LocalDateTime.now();
+    }
+
+    
 }

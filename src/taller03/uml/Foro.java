@@ -1,3 +1,5 @@
+package taller03.uml;
+
 public class Foro {
     
     private String id;
@@ -33,4 +35,11 @@ public class Foro {
     public void setNumeroDeComentarios(int numeroDeComentarios) {
         this.numeroDeComentarios = numeroDeComentarios;
     }
+
+    // Publicar un comentario simple (incrementa el contador)
+    public void publicarComentario(String autor, String comentario) {
+        this.numeroDeComentarios++;
+        System.out.println("[Foro: " + tematica + "] " + autor + " publicó: " + comentario);
+    }
+
 }

@@ -9,27 +9,14 @@ public class Usuario {
     protected boolean sesionActiva;
 
     public Usuario() {
-
     }
 
-    public Usuario(String usuario, String contra, String nombre, String apellido) {
+    public Usuario(String usuario, String contrasenia, String nombre, String apellido) {
         this.usuario = usuario;
-        this.contrasenia = contra;
+        this.contrasenia = contrasenia;
         this.nombre = nombre;
         this.apellido = apellido;
         this.sesionActiva = false;
-    }
-
-    public boolean isSesionActiva() {
-        return sesionActiva;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-    
-    public String getNombre() {
-        return nombre;
     }
 
     public String getUsuario() {
@@ -40,41 +27,53 @@ public class Usuario {
         return contrasenia;
     }
 
-    public void setUsuario(String u) {
-        this.usuario = u;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setContrasenia(String c) {
-        this.contrasenia = c;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setNombre(String n) {
-        this.nombre = n;
-    }
-    
-    public void setApellido(String a) {
-        this.apellido = a;
+    public boolean isSesionActiva() {
+        return sesionActiva;
     }
 
-    // Métodos para autenticación
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
 
     public boolean logIn(String user, String pass) {
-        if(sesionActiva) {
-            return false;
-        } else if (this.usuario.equals(user) && this.contrasenia.equals(pass)) {
-            sesionActiva = true;
-            return true;
-        } else {
+        if (sesionActiva) {
             return false;
         }
+
+        if (this.usuario.equals(user) && this.contrasenia.equals(pass)) {
+            sesionActiva = true;
+            return true;
+        }
+
+        return false;
     }
 
     public boolean logOut() {
-        if(!sesionActiva) {
+        if (sesionActiva) {
             sesionActiva = false;
             return true;
         }
+
         return false;
     }
-    
 }
