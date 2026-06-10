@@ -8,7 +8,7 @@ package taller03.uml;
  *
  * @author CltControl
  */
-public class Taller03UML {
+public class Plataforma {
 
     /**
      * @param args the command line arguments
