@@ -6,12 +6,22 @@ public class Usuario {
     protected String contrasenia;
     protected String nombre;
     protected String apellido;
+    protected boolean sesionActiva;
 
-    public Usuario (String usuario, String contra, String nombre, String apellido) {
+    public Usuario() {
+
+    }
+
+    public Usuario(String usuario, String contra, String nombre, String apellido) {
         this.usuario = usuario;
         this.contrasenia = contra;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.sesionActiva = false;
+    }
+
+    public boolean isSesionActiva() {
+        return sesionActiva;
     }
 
     public String getApellido() {
@@ -46,12 +56,25 @@ public class Usuario {
         this.apellido = a;
     }
 
-    public boolean logIn() {
-        return true;
+    // Métodos para autenticación
+
+    public boolean logIn(String user, String pass) {
+        if(sesionActiva) {
+            return false;
+        } else if (this.usuario.equals(user) && this.contrasenia.equals(pass)) {
+            sesionActiva = true;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean logOut() {
-        return true;
+        if(!sesionActiva) {
+            sesionActiva = false;
+            return true;
+        }
+        return false;
     }
     
 }

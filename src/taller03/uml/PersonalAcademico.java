@@ -2,6 +2,10 @@ package taller03.uml;
 
 public class PersonalAcademico extends Usuario {
 
+    public PersonalAcademico() {
+        super();
+    }
+
     public PersonalAcademico(String usuario, String contra, String nombre, String apellido) {
         super(usuario, contra, nombre, apellido);
     }
